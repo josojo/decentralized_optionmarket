@@ -1,0 +1,34 @@
+var Web3=require('web3');
+if(typeof web3 !== 'undefined')
+  web3 = new Web3(web3.currentProvider);
+else
+  web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+  var Pudding = require("ether-pudding");
+Pudding.setWeb3(web3);
+web3.eth.defaultAccount=web3.eth.coinbase;
+var src= "./environments/development/contracts/";
+var dest="./frontend/app/ContractUtils/"
+
+var copyRecursiveSync = function(src, dest) {
+  var exists = fs.existsSync(src);
+  var stats = exists && fs.statSync(src);
+  var isDirectory = exists && stats.isDirectory();
+  if (exists && isDirectory) {
+    fs.readdirSync(src).forEach(function(childItemName) {
+      copyRecursiveSync(path.join(src, childItemName),
+                        path.join(dest, childItemName));
+    });
+  } else {
+    fs.linkSync(src, dest);
+  }
+};
+
+
+var COwner = require("./frontend/app/ContractUtils/Owner.sol.js");
+COwner.load(Pudding);
+COwner.new();
+OO._rejectionHandler0.address
+var CDAOFunctions = require("./frontend/app/ContractUtils/DAOFunctions.sol.js");
+CDAOFunctions.load(Pudding);
+CDAOFunctions.at(CDAOFunctions.address).setDAOFunctions(COwner.address);

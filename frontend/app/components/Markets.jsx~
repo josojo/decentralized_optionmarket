@@ -1,0 +1,40 @@
+import React from 'react';
+import {StoreWatchMixin} from 'fluxxor';
+import {FluxMixin} from 'fluxxor';
+
+let Markets = React.createClass({
+	mixins: [FluxMixin, StoreWatchMixin("markets")],
+
+	componentWillMount() {},
+
+        componentDidMount() {
+                this.props.flux.actions.config.initializeState();
+        },
+
+        componentWillReceiveProps(nextProps) {},
+
+	getStateFromFlux: function() {
+   	 var store = this.getFlux().store("MarketPairStore");
+	    return {
+	      markets: _.values(store.markets)
+	    };
+	  },
+
+
+        render: function() {
+                return (
+                        <div>
+                               <h1>Markets</h1>
+				<table border=1>
+					<tr><td>Name</td><td>addresses</td></tr>";
+					 {this.state.markets.map(function(market) {
+		   				 return <tr><td>" + market.name + "</td><td>" + market.address + "</td></tr>;
+		 					 })}
+				</table>
+                        </div>
+                );
+        }
+
+});
+
+module.exports = TestAlex;

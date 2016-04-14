@@ -1,0 +1,16 @@
+import React from 'react';
+
+let TestAlex = React.createClass({
+        render: function() {
+                return (
+                        <div>
+                               <h1>coinbase balance</h1>
+				
+				<div id="coinbase"></div>
+                        </div>
+                );
+        }
+
+});
+
+module.exports = TestAlex;
