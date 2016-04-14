@@ -32,11 +32,10 @@ This README would normally document whatever steps are necessary to get your app
 
 You will need a working node.js setup ([instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)) and globally installed `grunt-cli` ([instructions](http://gruntjs.com/getting-started)).
 
-Install truffle, testrpc, npm install -g ether-pudding, npm install -g bluebird
+Install truffle, testrpc, npm install -g ether-pudding, npm install -g bluebird, npm install -g web3, npm install -g promise, npm install -g path, npm install -g fs 
 
 start testrpc,
-truffle deploy,
-node employfully.js
+truffle deploy
 
 now you have all contracts deployed into testrpc
 
@@ -47,3 +46,5 @@ grunt
 ```
 
 Now, open `http://localhost:8080/` in your browser.
+test whether blockchain interation is working with
+"http://localhost:8080/markets"
