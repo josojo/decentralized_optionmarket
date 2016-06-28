@@ -9,7 +9,7 @@ contract PriceFeed{
 	address globalParameters; //needs to be set by constructor
 	Oracles oracles; //needs to be set by constructor
 	OracleWorking oracleWorking;//needs to be set by constructor
-	string name;//needs to be set by constructor
+	string name;  //needs to be set by constructor
 	Marketplace marketplace;
 	//////price 1 USD = x wei;
 	////////////////////keeping track of prices/////////////////
@@ -21,17 +21,19 @@ contract PriceFeed{
 	uint lastPrice=0;
 
 
-	event RequestForOracle(uint blocknr, string name);
+	event RequestForOracle(uint blocknr);
 
 	function newPriceRequest(uint blocknr) constant returns (bool){
+
+			RequestForOracle(blocknr);
 		if(msg.value< costofpriecerequest)throw;
-		if(blocknr>block.number) throw;
-		if(blocknr-50<block.number)throw;
+
+		if(blocknr>block.number+1) throw;
+		if(blocknr<block.number-50)throw;
 		if(lastpricesblocknr[blocknr%50]==blocknr)throw;
 
 		lastpricesblocknr[blocknr%50]=blocknr;
 		pricesubmitted[blocknr%50]=false;
-		RequestForOracle(blocknr,name);
 		return true;
 	}
 

@@ -20,7 +20,7 @@ contract MarketPair is PriceFeed{
 	}
 	////////////////////////////////////////////////////////////////////////////
 
-
+	event test(uint name);
 	address[] optionPuts;
 	address[] optionCalls;
 
@@ -29,6 +29,7 @@ contract MarketPair is PriceFeed{
 
 
 	function listOptionPuts()  constant returns (address[]){
+test(6);
 		return optionPuts;
 	}
 	function listOptionCalls()  constant returns (address[]){
